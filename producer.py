@@ -8,6 +8,7 @@ from datetime import datetime, time
 from kiteconnect import KiteTicker
 import psycopg2
 
+
 redis_client = redis.Redis(host='localhost', port=6379, db=0)
 directory_path = "logs"
 os.makedirs(directory_path, exist_ok=True)
@@ -15,9 +16,10 @@ logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s',
                     handlers=[logging.FileHandler(f"{directory_path}/producer_logger.log"),
                               logging.StreamHandler()])
+
 db_connection = psycopg2.connect(dbname="nifty_trial",
     user="postgres",
-    password="anand1011",
+    password="admin123",
     host="localhost",
     port="5432")
 
@@ -27,6 +29,7 @@ instrument_df = pd.read_csv(f'filtered_kite_instruments.csv')
 instrument_df = instrument_df[:10]
 instrument_token_to_symbol = dict(zip(instrument_df['instrument_token'], instrument_df['tradingsymbol']))
 tokens = instrument_df['instrument_token'].tolist()
+
 
 def create_table(symbol):
     try:

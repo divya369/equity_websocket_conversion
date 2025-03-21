@@ -1,0 +1,67 @@
+# Ignore a specific folder (replace 'folder_name' with the actual folder name)
+
+# Ignore extra files
+*.csv
+/data/
+*.sh
+*.txt
+*.png
+
+# === Python ===
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyo
+*.pdb
+
+# Virtual environments
+.venv/
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# === Django ===
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+db.sqlite3
+*.db
+*.bak
+
+# Django migrations (optional: only ignore if you don't want to track initial migrations)
+**/migrations/**
+
+# Local Django settings (if you have different settings for dev/prod)
+.env
+.env.local
+.env.production
+.env.development
+
+# === macOS ===
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# === Logs & Debugging ===
+logs/
+*.log
+*.out
+*.err
+*.pid
+*.seed
+
+# Keep a specific file inside an ignored folder
+#!logs/.gitkeep
+
+# === Editors & OS Specific ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace

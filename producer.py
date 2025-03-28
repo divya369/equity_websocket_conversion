@@ -62,7 +62,14 @@ def on_ticks(ws, ticks):
             # logging.info(f"Tick Data: {(ticks)}")  # Logging received tick data
             # time.sleep(10)
             for tick in ticks:
-                serialized_tick = orjson.dumps(tick)
+              time_str = tick["last_trade_time"]
+              filtered_tick = {
+                    "timestamp" : time_str,
+                    "instrument_token" : tick["instrument_token"],
+                    "last_price" : tick["last_price"],
+                    "volume" : tick["volume_traded"]
+              }
+                serialized_tick = orjson.dumps(filtered_tick)
                 redis_client.xadd('nifty_ticks', {'data': serialized_tick}, maxlen=10000, approximate=False)
         else:
             logging.info("Market is closed. Ignoring incoming ticks.")

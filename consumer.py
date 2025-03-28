@@ -73,10 +73,10 @@ def process_message(msg_id, msg_value):
             symbol = instrument_token_to_symbol.get(data['instrument_token'], str(data['instrument_token'])).upper()
 
             processed_data = {
-                'timestamp': data.get("exchange_timestamp", " " ).replace("T", " "),
-                'instrument_token': data.get("instrument_token"),
-                'last_price': data.get("last_price"),
-                'volume_traded': data.get("volume_traded")
+                 'timestamp': data["timestamp"],
+                'instrument_token': data["instrument_token"],
+                'last_price': data["last_price"],
+                'volume_traded': data["volume"]
             }
 
             if save_to_postgresql(symbol, processed_data):
